@@ -152,6 +152,31 @@ if OnlineList[user_index] == "Yes":
     time.sleep(delay)
     print("")
     print("It looks like online betting is legal in your area!")
+    sport = input("Please select your Sport (baseball, football, hockey, or basketball): ").lower()
+
+    valid_options = ['baseball', 'football', 'hockey', 'basketball']
+
+    is_valid = sport not in valid_options
+
+    try:
+        if is_valid == True: 
+            raise ValueError()
+    except ValueError:
+        print("Please enter a valid sport")
+        exit()`
+
+## Can probably do this cleaner but its not raising an error if I don't make a new variable
+
+selection = sport
+
+if selection == 'baseball':
+  selection = 'baseball_mlb'
+elif selection == 'football':
+  selection = 'americanfootball_nfl'
+elif selection == 'hockey':
+  selection = 'icehockey_nhl'
+elif selection == 'basketball':
+  selection = 'basketball_nba'
     if RegisterList[user_index] == "Yes":
         time.sleep(delay)
         print("")
