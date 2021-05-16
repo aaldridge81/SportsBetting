@@ -23,13 +23,6 @@ API_KEY="abc123"
 Substitute your unique API Key for "abc123"
 
 
-Once the program is cloned, the user should enter 
-```sh
-cd ~/Desktop/shopping-cart
-```
-into their command line, if they cloned it to their desktop, to navigate to the program.
-
-
 ## Environment Setup
 
 Use Anaconda to create and activate a new virtual environment, called "shopping-env": 
