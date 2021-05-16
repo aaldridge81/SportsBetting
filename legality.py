@@ -154,79 +154,80 @@ if OnlineList[user_index] == "Yes":
             for item in Team_name:
                 name_cap = item.capitalize()
                 teams.append(name_cap)
-        print(teams)
-        for item in odds_json['data']:
-            #print(item.keys())
-            commence_datetime = item['commence_time']
-            ts = int(commence_datetime)
-            dt_utc = datetime.utcfromtimestamp(ts)
-            dt_diff = timedelta(hours=4)
-            dt_est = dt_utc - dt_diff
-            today = date.today()
-            game_start_date = dt_est.date()
-            newDateFormat =datetime.strptime(str(game_start_date), '%Y-%m-%d')
-            newStartDate = newDateFormat.strftime('%m-%d-%Y')
-        
-            game_start_time = dt_est.time()
-            newTimeFormat =datetime.strptime(str(game_start_time), '%H:%M:%S' )
-            newStartTime = newTimeFormat.strftime('%I:%M %p')
-
-
-            if game_start_date == today:
-                home = item['teams'][0].split()
-                away = item['teams'][1].split()
-                for word in home:
-                    home_team.append(word)
-                for word in away:
-                    away_team.append(word)
-                if 'Go' in teams:
-                    a.append(item['teams'])
-                    b.append(item['teams'])
-                    print("")
-                    print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
-                    for site in item["sites"]:
-                        print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
-                check = all(item in home_team for item in teams) or all(item in away_team for item in teams)
-                if check is True:
-                    a.append(item['teams'])
-                    b.append(item['teams'])
-                    print("")
-                    print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
-                    time.sleep(delay)
-                    for site in item["sites"]:
-                        print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
-                    home_team.clear()
-                    away_team.clear()
-                if check is False:
-                    home_team.clear()
-                    away_team.clear()
-                    pass
-
-
-
-        if not a:
-            print("We could not find the team you were looking for, here are all of the upcoming games in this league.")
-            
-            print("---------------")
+            print(teams)
             for item in odds_json['data']:
+                #print(item.keys())
                 commence_datetime = item['commence_time']
                 ts = int(commence_datetime)
                 dt_utc = datetime.utcfromtimestamp(ts)
                 dt_diff = timedelta(hours=4)
                 dt_est = dt_utc - dt_diff
-                game_start_date = dt_est.date()
-                game_start_time = dt_est.time()
                 today = date.today()
+                game_start_date = dt_est.date()
+                newDateFormat =datetime.strptime(str(game_start_date), '%Y-%m-%d')
+                newStartDate = newDateFormat.strftime('%m-%d-%Y')
+
+                game_start_time = dt_est.time()
+                newTimeFormat =datetime.strptime(str(game_start_time), '%H:%M:%S' )
+                newStartTime = newTimeFormat.strftime('%I:%M %p')
+
+
                 if game_start_date == today:
-                    b.append(item['teams'])
-                    print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
-                    for site in item["sites"]:
-                        print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
-            
-       
-        if not b:
-            print("---------------")
-            print("There are no upcoming games in this league")
+                    home = item['teams'][0].split()
+                    away = item['teams'][1].split()
+                    for word in home:
+                        home_team.append(word)
+                    for word in away:
+                        away_team.append(word)
+                    if 'Go' in teams:
+                        a.append(item['teams'])
+                        b.append(item['teams'])
+                        print("")
+                        print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
+                        for site in item["sites"]:
+                            print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
+                    check = all(item in home_team for item in teams) or all(item in away_team for item in teams)
+                    if check is True:
+                        a.append(item['teams'])
+                        b.append(item['teams'])
+                        print("")
+                        print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
+                        time.sleep(delay)
+                        for site in item["sites"]:
+                            print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
+                        home_team.clear()
+                        away_team.clear()
+                    if check is False:
+                        pass
+                        home_team.clear()
+                        away_team.clear()
+                    
+
+
+
+            if not a:
+                print("We could not find the team you were looking for, here are all of the upcoming games in this league.")
+                
+                print("---------------")
+                for item in odds_json['data']:
+                    commence_datetime = item['commence_time']
+                    ts = int(commence_datetime)
+                    dt_utc = datetime.utcfromtimestamp(ts)
+                    dt_diff = timedelta(hours=4)
+                    dt_est = dt_utc - dt_diff
+                    game_start_date = dt_est.date()
+                    game_start_time = dt_est.time()
+                    today = date.today()
+                    if game_start_date == today:
+                        b.append(item['teams'])
+                        print(f"For the game between {item['teams']} that starts at {newStartTime} EST on {newStartDate},")
+                        for site in item["sites"]:
+                            print(f"The odds on  {site['site_nice']} are {site['odds']['spreads']['odds']}")
+                
+        
+            if not b:
+                print("---------------")
+                print("There are no upcoming games in this league")
         else:
             print(f"It appears there are no", sport, "games today, make sure", sport, "is in season or try another sport.")
         
