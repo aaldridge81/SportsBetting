@@ -24,7 +24,7 @@ pip install -r requirements.text
 
 ## Setup
 
-In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to your states' tax rate:
+In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to your API Key:
 
     API_KEY = 'APIKEY'
 
