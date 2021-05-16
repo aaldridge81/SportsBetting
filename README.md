@@ -1,5 +1,28 @@
 # SportsBetting
 
+
+## Setup
+
+Clone or download repo from https://github.com/wpp5/robo-advisor onto your desktop
+
+Nagivate from command line:
+```sh
+cd Desktop/SportsBetting
+```
+
+Obtain a unique API key from AlphaVantage: 
+https://the-odds-api.com/#get-access
+
+Create a file called .env within the local repo:
+
+Within .env file, assign your unique API to the enviroment variable API_KEY
+
+```sh 
+API_KEY="abc123"
+```
+Substitute your unique API Key for "abc123"
+
+
 Once the program is cloned, the user should enter 
 ```sh
 cd ~/Desktop/shopping-cart
@@ -22,11 +45,7 @@ pip install -r requirements.text
 
 > NOTE: If installation causes an error message, make sure you are navigating within the repository's root directiory, where the requirements.txt file exists 
 
-## Setup
 
-In in the root directory of your local repository, create a new file called ".env", and update the contents of the ".env" file to your API Key:
-
-    API_KEY = 'APIKEY'
 
 ## Usage
 To run the program, in the command line:
