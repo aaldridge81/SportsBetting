@@ -110,7 +110,6 @@ if OnlineList[user_index] == "Yes":
         print("Please enter a valid sport")
         #exit()`
     
-    ## Can probably do this cleaner but its not raising an error if I don't make a new variable
     sport_selection = sport
     if sport_selection == 'baseball':
         sport_selection = 'baseball_mlb'
